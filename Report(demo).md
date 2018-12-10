@@ -11,9 +11,13 @@ First, we describe what is needed, including:
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot in configuration ???
+Requires: A Duckiebot able to take logs from the camera
 
-Requires: Camera calibration completed.
+Requires: A calibrated camera
+
+Requires: A duckietown complying with the usual standards
+
+Requires: A laptop with Python3
 
 </div>
 
@@ -23,22 +27,19 @@ First, we show a video of the expected behavior (if the demo is succesful).
 
 ## Duckietown setup notes {#demo-template-duckietown-setup}
 
-Here, describe the assumptions about the Duckietown, including:
+A duckietown complying with the usual standards is required. In particular, the segmentation algorithm is designed to work under the following conditions:
 
-* Layout (tiles types)
-* Instrastructure (traffic lights, wifi networks, ...) required
-* Weather (lights, ...)
-
-Do not write instructions here. The instructions should be somewhere in [the part about Duckietowns](+opmanual_duckietown#duckietowns). Here, merely point to them.
+* Uninterrupted white lines complying with standards
+* Yellow (middle) lines complying with standards
+* Only ducks or duckiebots are allowed to be on the road, cones or other objects should be removed as they won't be detected as obstacles
+* Humans, other animals or objects are only allowed outside of the driving lanes
+* No particular lighting conditions are required
 
 
 ## Duckiebot setup notes {#demo-template-duckiebot-setup}
 
-Write here any special setup for the Duckiebot, if needed.
-
-
-Do not write instructions here. The instructions should be somewhere in the appropriate setup part.
-
+No special requirements for duckiebots are needed, except the ability of recording logs from the camera.
+Maybe, something regarding the movidus stick if we plan to use the software on the bot
 
 ## Pre-flight checklist {#demo-template-pre-flight}
 
