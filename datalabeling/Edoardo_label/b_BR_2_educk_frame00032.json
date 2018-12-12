@@ -1,0 +1,536 @@
+{
+  "shapes": [
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          636, 
+          479
+        ], 
+        [
+          640, 
+          195
+        ], 
+        [
+          618, 
+          187
+        ], 
+        [
+          293, 
+          199
+        ], 
+        [
+          286, 
+          174
+        ], 
+        [
+          299, 
+          172
+        ], 
+        [
+          298, 
+          160
+        ], 
+        [
+          226, 
+          165
+        ], 
+        [
+          128, 
+          179
+        ], 
+        [
+          116, 
+          182
+        ], 
+        [
+          0, 
+          233
+        ], 
+        [
+          0, 
+          478
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Road"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          253, 
+          266
+        ], 
+        [
+          465, 
+          251
+        ], 
+        [
+          487, 
+          248
+        ], 
+        [
+          439, 
+          236
+        ], 
+        [
+          251, 
+          252
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Traffic signs"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          504, 
+          248
+        ], 
+        [
+          535, 
+          242
+        ], 
+        [
+          491, 
+          231
+        ], 
+        [
+          463, 
+          236
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Yellow Line"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          548, 
+          241
+        ], 
+        [
+          566, 
+          238
+        ], 
+        [
+          532, 
+          227
+        ], 
+        [
+          508, 
+          229
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Yellow Line"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          579, 
+          236
+        ], 
+        [
+          594, 
+          231
+        ], 
+        [
+          563, 
+          220
+        ], 
+        [
+          544, 
+          225
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Yellow Line"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          610, 
+          233
+        ], 
+        [
+          620, 
+          228
+        ], 
+        [
+          588, 
+          218
+        ], 
+        [
+          578, 
+          220
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Yellow Line"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          631, 
+          229
+        ], 
+        [
+          640, 
+          221
+        ], 
+        [
+          639, 
+          209
+        ], 
+        [
+          597, 
+          218
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Yellow Line"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          146, 
+          216
+        ], 
+        [
+          207, 
+          175
+        ], 
+        [
+          179, 
+          178
+        ], 
+        [
+          162, 
+          185
+        ], 
+        [
+          125, 
+          211
+        ], 
+        [
+          122, 
+          219
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Yellow Line"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          120, 
+          220
+        ], 
+        [
+          123, 
+          213
+        ], 
+        [
+          61, 
+          218
+        ], 
+        [
+          61, 
+          226
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Red Line"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          305, 
+          206
+        ], 
+        [
+          310, 
+          248
+        ], 
+        [
+          254, 
+          251
+        ], 
+        [
+          248, 
+          207
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Yellow Line"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          297, 
+          102
+        ], 
+        [
+          370, 
+          100
+        ], 
+        [
+          376, 
+          182
+        ], 
+        [
+          301, 
+          187
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Traffic signs"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          266, 
+          256
+        ], 
+        [
+          274, 
+          285
+        ], 
+        [
+          346, 
+          290
+        ], 
+        [
+          371, 
+          276
+        ], 
+        [
+          357, 
+          259
+        ], 
+        [
+          391, 
+          255
+        ], 
+        [
+          436, 
+          259
+        ], 
+        [
+          446, 
+          238
+        ], 
+        [
+          428, 
+          213
+        ], 
+        [
+          381, 
+          209
+        ], 
+        [
+          371, 
+          229
+        ], 
+        [
+          301, 
+          225
+        ], 
+        [
+          290, 
+          235
+        ], 
+        [
+          293, 
+          253
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Duck"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          550, 
+          212
+        ], 
+        [
+          566, 
+          215
+        ], 
+        [
+          571, 
+          188
+        ], 
+        [
+          567, 
+          174
+        ], 
+        [
+          599, 
+          173
+        ], 
+        [
+          594, 
+          158
+        ], 
+        [
+          556, 
+          160
+        ], 
+        [
+          538, 
+          113
+        ], 
+        [
+          510, 
+          120
+        ], 
+        [
+          486, 
+          145
+        ], 
+        [
+          473, 
+          154
+        ], 
+        [
+          466, 
+          171
+        ], 
+        [
+          469, 
+          186
+        ], 
+        [
+          486, 
+          193
+        ], 
+        [
+          515, 
+          193
+        ], 
+        [
+          504, 
+          201
+        ], 
+        [
+          516, 
+          208
+        ], 
+        [
+          534, 
+          214
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Duckiebot"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          113, 
+          198
+        ], 
+        [
+          145, 
+          194
+        ], 
+        [
+          154, 
+          190
+        ], 
+        [
+          153, 
+          187
+        ], 
+        [
+          131, 
+          188
+        ], 
+        [
+          126, 
+          182
+        ], 
+        [
+          113, 
+          182
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Duck"
+    }, 
+    {
+      "shape_type": "polygon", 
+      "line_color": null, 
+      "points": [
+        [
+          10, 
+          209
+        ], 
+        [
+          45, 
+          202
+        ], 
+        [
+          37, 
+          138
+        ], 
+        [
+          0, 
+          141
+        ], 
+        [
+          5, 
+          197
+        ]
+      ], 
+      "fill_color": null, 
+      "label": "Traffic signs"
+    }
+  ], 
+  "lineColor": [
+    0, 
+    255, 
+    0, 
+    128
+  ], 
+  "imagePath": "b_BR_2_educk_frame00032.jpg", 
+  "flags": {}, 
+  "version": "3.5.0", 
+  "imageData": null, 
+  "fillColor": [
+    255, 
+    0, 
+    0, 
+    128
+  ]
+}
