@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-from __future__ import *
-
 from duckietown_challenges import wrap_solution, ChallengeSolution, ChallengeInterfaceSolution
 from myalgorithm import *
 class Solver(ChallengeSolution):

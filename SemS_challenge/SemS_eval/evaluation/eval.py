@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-from __future__ import *
-
 import logging
 import math
 import metrics
@@ -70,7 +68,7 @@ class Evaluator(ChallengeEvaluator):
             print(predicted_label.shape)
             print(ground_truth.shape)
             # ground_truth = ground_truth_from_eval[i]
-            running_metrics_val.update(predicted_label, ground_truth)
+            running_metrics_val.update(ground_truth,predicted_label)
 
         # ground_truth = metrics.get_GT() #this gets an artificial ground truth
 

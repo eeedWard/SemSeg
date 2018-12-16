@@ -1,5 +1,3 @@
-from __future__ import *
-
 import os
 import numpy as np
 import tensorflow as tf

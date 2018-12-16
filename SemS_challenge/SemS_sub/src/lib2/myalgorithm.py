@@ -1,4 +1,3 @@
-from __future__ import *
 import numpy as np
 import tensorflow as tf
 import cv2
@@ -31,7 +30,7 @@ class InferenceConfig(Config):
     model_type = 'trainval'
 
     # Set pre-trained weights here (You can download weight from Google Drive) 
-    model_weight = 'icnet_cityscapes_trainval_90k.npy'
+    model_weight = '/challenge-solution/icnet_cityscapes_trainval_90k.npy'
     
     # Define default input size here
     INFER_SIZE = (1024, 2048, 3)

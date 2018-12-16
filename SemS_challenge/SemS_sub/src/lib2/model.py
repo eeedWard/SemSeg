@@ -1,5 +1,3 @@
-from __future__ import *
-
 import tensorflow as tf
 from network import Network
 from image_reader import _infer_preprocess
