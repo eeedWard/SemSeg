@@ -1,0 +1,3 @@
+[console_scripts]
+dts = dt_shell:cli_main
+

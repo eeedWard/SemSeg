@@ -1,0 +1,49 @@
+
+challenge: Regression_test_for_lib
+title: "Regression test: lib"
+tags: [testing,lib]
+description: null # load from challenge.description.m
+
+protocol: RT_lib
+
+date-open: 2018-09-01t21:59:43.10-05:00
+date-close: 2019-01-01t21:59:43.10-05:00
+
+roles: {}
+
+scoring:
+  scores:
+  - name: score1
+    description: FreqW Acc
+  - name: score2
+    description: Mean IoU
+  - name: score3
+    description: Mean Acc.
+  - name: score4
+    description: Overall Acc.
+
+
+steps:
+  step1:
+    title: Scoring step
+    description: ""
+
+    timeout: 100
+    evaluation_parameters:
+      services:
+        evaluator:
+          image: _
+          build:
+            context: ./evaluation
+        solution:
+          image: SUBMISSION_CONTAINER
+
+    features_required:
+      ram_available_mb: 80
+      disk_available_mb: 100
+
+transitions:
+  - [START, success, step1]
+  - [step1, success, SUCCESS]
+  - [step1, failed, FAILED]
+  - [step1, error, ERROR]

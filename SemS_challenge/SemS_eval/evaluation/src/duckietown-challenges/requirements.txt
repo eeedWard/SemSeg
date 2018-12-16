@@ -1,0 +1,11 @@
+decorator
+PyYAML
+python-dateutil
+oyaml
+numpy
+termcolor
+# for testing
+comptests==1.4.27
+six
+future
+networkx>=2.2

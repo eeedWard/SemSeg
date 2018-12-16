@@ -1,0 +1,14 @@
+gitpython
+texttable
+base58
+ecdsa
+python-dateutil
+whichcraft
+termcolor
+PyYAML
+docker
+psutil
+six
+ruamel.ordereddict
+ruamel.yaml
+future

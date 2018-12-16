@@ -1,0 +1,6 @@
+# testing
+comptests
+coverage
+coveralls
+tensorflow
+opencv-python==3.3.0.9

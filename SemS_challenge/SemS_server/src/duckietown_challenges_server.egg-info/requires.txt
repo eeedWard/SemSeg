@@ -1,0 +1,11 @@
+markdown
+cornice
+waitress
+pyramid
+pymysql
+lxml
+colander
+networkx>=2
+termcolor
+pyramid_debugtoolbar
+ansi2html
