@@ -5,9 +5,10 @@ import numpy as np
 
 
 class runningScore(object):
-    def __init__(self, n_classes):
+    def __init__(self, n_classes, weights):
         self.n_classes = n_classes
         self.confusion_matrix = np.zeros((n_classes, n_classes))
+        self.weights = weights
 
     def _fast_hist(self, label_true, label_pred, n_class):
         mask = (label_true >= 0) & (label_true < n_class)
@@ -30,24 +31,36 @@ class runningScore(object):
             - mean IU
             - fwavacc
         """
-        # 0:background, 1:Duck, 2:Road, 3:Duckiebot, 4:Traffic Sign, 5:Red line, 6:Yellow line
-        weights = np.array([0.05, 0.15, 0.35, 0.15, 0.1, 0.1, 0.1]) # sum of weights must be == 1
+
+
+
+
         hist = self.confusion_matrix
 
         acc = np.diag(hist).sum() / hist.sum() # overall acc
         acc_cls = np.diag(hist) / hist.sum(axis=1) # accuracy for each single calss
         mean_acc = np.nanmean(acc_cls) #mean accuracy with equal weights
-        mean_acc_weighted = np.nanmean(np.dot(weights, acc_cls)) # weighted accuracy
+        mean_acc_weighted = np.dot(self.weights, acc_cls) # weighted accuracy
 
 
         iu = np.diag(hist) / (hist.sum(axis=1) + hist.sum(axis=0) - np.diag(hist))
         mean_iu = np.nanmean(iu)
-        mean_iu_weighted = np.nanmean(np.dot(weights, iu))
+        mean_iu_weighted = np.dot(self.weights, iu)
 
 
         freq = hist.sum(axis=1) / hist.sum()
         fwavacc = (freq[freq > 0] * iu[freq > 0]).sum()
         cls_iu = dict(zip(range(self.n_classes), iu))
+
+        if (np.isnan(acc)) or np.isinf(acc):
+            acc = 0
+        if (np.isnan(mean_acc_weighted)) or np.isinf(mean_acc_weighted):
+            mean_acc_weighted = 0
+        if (np.isnan(mean_iu)) or np.isinf(mean_iu):
+            mean_iu = 0
+        if (np.isnan(mean_iu_weighted)) or np.isinf(mean_iu_weighted):
+            mean_iu_weighted = 0
+
 
         return (
             {

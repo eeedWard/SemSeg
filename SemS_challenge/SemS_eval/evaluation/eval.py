@@ -6,7 +6,7 @@ import numpy as np
 from duckietown_challenges import wrap_evaluator, ChallengeEvaluator, InvalidSubmission
 from demo import getinput
 import os
-# import cv2
+import cv2
 logging.basicConfig()
 logger = logging.getLogger('evaluator')
 logger.setLevel(logging.DEBUG)
@@ -34,7 +34,7 @@ class Evaluator(ChallengeEvaluator):
             test_img, ground_truth = img_reader.send_img()
 
 
-            test_img = cv2.resize(test_img, (2048, 1024)) #this is only to use DT images on cityscape!
+            test_img = cv2.resize(test_img, (700, 500)) #this is only to use DT images on cityscape!
             print()
             print()
             print()
@@ -67,9 +67,10 @@ class Evaluator(ChallengeEvaluator):
         print()
         print()
 
-
+        # 0:background, 1:Duck, 2:Road, 3:Duckiebot, 4:Traffic Sign, 5:Red line, 6:Yellow line
+        class_weights = np.array([0.05, 0.15, 0.35, 0.15, 0.1, 0.1, 0.1]) # sum of weights must be == 1
     	# create object to evaluate the solution
-        running_metrics_val  = metrics.runningScore(7) #19 is the number of the labels
+        running_metrics_val  = metrics.runningScore(7, class_weights) #7 is the number of classes
 
         # read ground truth
         img_reader = getinput(7,'./challenge-evaluator') # /challenge-evaluator is needed for a bug in the dockerfile
@@ -78,13 +79,16 @@ class Evaluator(ChallengeEvaluator):
         for i in range(len(predicted_labels_set)):
             test_img, ground_truth = img_reader.send_img() 
 
-
-            ground_truth =  cv2.resize(ground_truth, (2048, 1024), interpolation=cv2.INTER_NEAREST) #this is only to use DT images on cityscape!
+            # ground_truth = np.ones((1, 120, 240))
+            ground_truth_img = ground_truth[0, :, :]
+            ground_truth_img_resize =  cv2.resize(ground_truth_img, (700, 500), interpolation=cv2.INTER_NEAREST) #this is only to use DT images on cityscape!
+            ground_truth = ground_truth_img_resize[np.newaxis,:]
             print()
             print()
             print()
             print()
             print('ground_truth.shape', ground_truth.shape)
+            print('ground_truth', ground_truth[0, :, :])
             print()
             print()
             print()
