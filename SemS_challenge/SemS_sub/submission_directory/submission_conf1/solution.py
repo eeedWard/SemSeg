@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from duckietown_challenges import wrap_solution, ChallengeSolution, ChallengeInterfaceSolution
 from myalgorithm import *
+
 class Solver(ChallengeSolution):
     def run(self, cis):
         assert isinstance(cis, ChallengeInterfaceSolution)
@@ -13,8 +14,6 @@ class Solver(ChallengeSolution):
 	test_set_from_eval = test_set_from_eval_dic['test_set']
 	#list of np arrays of shape: (1024, 2048, 3)
 
-
-		
 
 	myclass = MyClass() #init class and load weights
 

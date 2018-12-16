@@ -30,27 +30,32 @@ class runningScore(object):
             - mean IU
             - fwavacc
         """
-        weights = np.array([0, 0.15, 0.1, 0.4, ])
+        # 0:background, 1:Duck, 2:Road, 3:Duckiebot, 4:Traffic Sign, 5:Red line, 6:Yellow line
+        weights = np.array([0.05, 0.15, 0.35, 0.15, 0.1, 0.1, 0.1]) # sum of weights must be == 1
         hist = self.confusion_matrix
 
         acc = np.diag(hist).sum() / hist.sum() # overall acc
         acc_cls = np.diag(hist) / hist.sum(axis=1) # accuracy for each single calss
-        acc_cls_equal = np.nanmean(acc_cls) #mean accuracy with equal weights
-        acc_cls_weighted = np.nanmean(np.dot(weights, acc_cls)) # weighted accuracy
+        mean_acc = np.nanmean(acc_cls) #mean accuracy with equal weights
+        mean_acc_weighted = np.nanmean(np.dot(weights, acc_cls)) # weighted accuracy
 
 
         iu = np.diag(hist) / (hist.sum(axis=1) + hist.sum(axis=0) - np.diag(hist))
         mean_iu = np.nanmean(iu)
+        mean_iu_weighted = np.nanmean(np.dot(weights, iu))
+
+
         freq = hist.sum(axis=1) / hist.sum()
         fwavacc = (freq[freq > 0] * iu[freq > 0]).sum()
         cls_iu = dict(zip(range(self.n_classes), iu))
 
         return (
             {
-                "Overall Acc: ": acc,
-                "Mean Weighted Acc : ": acc_cls_weighted,
-                "FreqW Acc : ": fwavacc,
-                "Mean IoU : ": mean_iu,
+                "Overall_Acc": acc,
+                "Mean_Weighted_Acc": mean_acc_weighted,
+                #"FreqW Acc : ": fwavacc,
+                "Mean_IoU": mean_iu,
+                "Mean_Weighted_IoU": mean_iu_weighted,
             },
             cls_iu,
         )

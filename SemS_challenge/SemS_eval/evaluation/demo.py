@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-from metrics import runningScore, averageMeter
+from metrics import runningScore #, averageMeter
 import os
 
 class getinput(object):
