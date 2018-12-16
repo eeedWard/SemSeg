@@ -30,10 +30,15 @@ class runningScore(object):
             - mean IU
             - fwavacc
         """
+        weights = np.array([0, 0.15, 0.1, 0.4, ])
         hist = self.confusion_matrix
-        acc = np.diag(hist).sum() / hist.sum()
-        acc_cls = np.diag(hist) / hist.sum(axis=1)
-        acc_cls = np.nanmean(acc_cls)
+
+        acc = np.diag(hist).sum() / hist.sum() # overall acc
+        acc_cls = np.diag(hist) / hist.sum(axis=1) # accuracy for each single calss
+        acc_cls_equal = np.nanmean(acc_cls) #mean accuracy with equal weights
+        acc_cls_weighted = np.nanmean(np.dot(weights, acc_cls)) # weighted accuracy
+
+
         iu = np.diag(hist) / (hist.sum(axis=1) + hist.sum(axis=0) - np.diag(hist))
         mean_iu = np.nanmean(iu)
         freq = hist.sum(axis=1) / hist.sum()
@@ -42,10 +47,10 @@ class runningScore(object):
 
         return (
             {
-                "Overall Acc: \t": acc,
-                "Mean Acc : \t": acc_cls,
-                "FreqW Acc : \t": fwavacc,
-                "Mean IoU : \t": mean_iu,
+                "Overall Acc: ": acc,
+                "Mean Weighted Acc : ": acc_cls_weighted,
+                "FreqW Acc : ": fwavacc,
+                "Mean IoU : ": mean_iu,
             },
             cls_iu,
         )
@@ -55,19 +60,19 @@ class runningScore(object):
 
 
 
-class averageMeter(object):
-    """Computes and stores the average and current value"""
-    def __init__(self):
-        self.reset()
+# class averageMeter(object):
+#     """Computes and stores the average and current value"""
+#     def __init__(self):
+#         self.reset()
 
-    def reset(self):
-        self.val = 0
-        self.avg = 0
-        self.sum = 0
-        self.count = 0
+#     def reset(self):
+#         self.val = 0
+#         self.avg = 0
+#         self.sum = 0
+#         self.count = 0
 
-    def update(self, val, n=1):
-        self.val = val
-        self.sum += val * n
-        self.count += n
-        self.avg = self.sum / self.count
+#     def update(self, val, n=1):
+#         self.val = val
+#         self.sum += val * n
+#         self.count += n
+#         self.avg = self.sum / self.count
