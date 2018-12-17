@@ -38,13 +38,19 @@ class runningScore(object):
         hist = self.confusion_matrix
 
         acc = np.diag(hist).sum() / hist.sum() # overall acc
+
         acc_cls = np.diag(hist) / hist.sum(axis=1) # accuracy for each single calss
+
         mean_acc = np.nanmean(acc_cls) #mean accuracy with equal weights
-        mean_acc_weighted = np.dot(self.weights, acc_cls) # weighted accuracy
-
-
+        
+        acc_cls = np.nan_to_num(acc_cls) #avoid nans and inf
+        mean_acc_weighted = np.dot(self.weights, acc_cls) # weighted accuracy     
+        
         iu = np.diag(hist) / (hist.sum(axis=1) + hist.sum(axis=0) - np.diag(hist))
+        
         mean_iu = np.nanmean(iu)
+
+        iu = np.nan_to_num(iu)
         mean_iu_weighted = np.dot(self.weights, iu)
 
 
@@ -52,15 +58,7 @@ class runningScore(object):
         fwavacc = (freq[freq > 0] * iu[freq > 0]).sum()
         cls_iu = dict(zip(range(self.n_classes), iu))
 
-        if (np.isnan(acc)) or np.isinf(acc):
-            acc = 0
-        if (np.isnan(mean_acc_weighted)) or np.isinf(mean_acc_weighted):
-            mean_acc_weighted = 0
-        if (np.isnan(mean_iu)) or np.isinf(mean_iu):
-            mean_iu = 0
-        if (np.isnan(mean_iu_weighted)) or np.isinf(mean_iu_weighted):
-            mean_iu_weighted = 0
-
+       
 
         return (
             {
