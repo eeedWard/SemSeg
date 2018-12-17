@@ -15,15 +15,25 @@ Requires: Bash shell command line
 </div>
 
 ## Semantic Segmentation
-What is semseg?
+Short introduction on what is semseg.
 
 ## Network
-### Idealisation
+### Aim
+How we wanted it to be (lightweight, fast, well trained).. but we couldnt because we didn't have labelled images...
+so we used the ICNET
 
 ### Network architecture
+ICNET description
 
 ## Implementation
-img from duckiebot --> analyse on laptop
+
+What happends when we use the algorithm
+A docker container is sent ... --> img from duckiebot --> analyse on laptop --> show image....
+
+* step 1
+* step 2
+* step 3
+
 
 ## AIDO challenge framework
 As part of the project, we created an AIDO challenge framework where you can upload your segmentation algorithm and receive a performance score.
@@ -97,7 +107,7 @@ Now, check if you can ping your bot. If you can't, you have problems with the co
 
 If you can ping your bot, go on portainer (http://.![robot name]:9000/#/containers) and make sure that ros-picam and roscore containers are running.
 
-Enter the following commands      
+Enter the following commands          
 
     laptop $ cd ~/catkin_ws3    
     laptop $ source devel/setup.bash    
