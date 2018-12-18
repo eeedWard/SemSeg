@@ -11,19 +11,45 @@ Requires: A duckietown complying with the usual standards
 Requires: A laptop with python2 and ROS installed
 
 Requires: Bash shell command line
+<br><br>
+
+OUTCOME: Viewing segmented images from the Duckiebot camera on your laptop
 
 </div>
 
+
 ## Semantic Segmentation
-Short introduction on what is semseg.
+
+Semantic segmentation is a computer vision task in which specific regions of an image are labeled according to what's being shown. More specifically, the goal of semantic segmentation is to label each pixel of an image with a class corresponding to what is being represented. Currently, most semantic segmentation methods rely on deep learning.
+
+<figure>
+    <figcaption>Eample of semantic segmentation</figcaption>
+      <img style='width:30em' src="Semantic_segmentation.png"/>
+</figure>
+
 
 ## Network
 ### Aim
-How we wanted it to be (lightweight, fast, well trained).. but we couldnt because we didn't have labelled images...
-so we used the ICNET
+The aim of the project is to design and implement a semantic sementation algorithm able to segment images of Duckietown.The algorithm has to be light, fast and accurate. In particular, it should take as small computing resources as possible, in order to be run on the Duckiebot Rasberry Pi. Moreover, it should be fast enough to achieve real-time image inference while being accurate enough for autonomous driving applications.
+However, since we were unable to obtain labeled images of Duckietown, we were forced to use a network trained on "real-world" images (Cityscapes dataset).
+
+<figure>
+    <figcaption>Comparison of main segmentation networks</figcaption>
+      <img style='width:15em' src="Network_comparison.png"/>
+</figure>
+
+The comparison between the most popular segmentation networks is shown in the above figure. According the design principles of segmentation algorithm, we chose the Image Cascade Network (ICNet), which is relatively light, fast and accurate.
 
 ### Network architecture
-ICNET description
+The ICNet provides us with a high efficiency segmentation system with decent quality. Its working principle is to first let low-resolution images go through the full semantic perception network for a coarse prediction map. Then the cascade feature fusion unit and cascade label guidance strategy are used to integrate medium and high resolution features, which gradually refine the coarse semantic map. The network architecture is shown in the following image.
+
+<figure>
+    <figcaption>ICNet architecture</figcaption>
+      <img style='width:30em' src="Network_architecture.png"/>
+</figure>
+
+Our code of the ICNet is implemented using the tensorflow framework and pre-trained on the Cityscapes dataset. The algorithm can obtain a mean accuracy of 80.3% on the Cityscapes dataset.
+
 
 ## Implementation
 
@@ -34,10 +60,21 @@ A docker container is sent ... --> img from duckiebot --> analyse on laptop --> 
 * step 2
 * step 3
 
+## Performance
+
+Even if the images from Cityscapes are somewhat similar to the ones of Duckietown, the algorithm could not be optimized for our application in terms of both computational requirements, speed and accuracy.
+
+* Computational requirements: since the network can only analyze 1024 x 2048 images, the images from the Rasberry Pi (480 x 640) are up-sampled before before being analyzed, with low performance in speed and computational requirements.
+
+* Speed: the algorithm is able to segment two images per second.
+
+* Accuracy: the network is trained to classify pixels between 19 "real-world" classes (such as humans, buses, bicycles etc). Despite the differences, some meaningful result can be obtained when classifying pixels as part of the road or background. The accuracy was not formally evaluated due to the differences in the number of classes and the non-availability of a test set.
+
 
 ## AIDO challenge framework
 As part of the project, we created an AIDO challenge framework where you can upload your segmentation algorithm and receive a performance score.
 The framework works as follows:
+
 * Your algorithm is adapted to a provided template. In particular, you should fit your main algorithm into a class with a specific method that takes a standard 480 x 640 Duckietown image and outputs a labeled image in a specific format. The main algorithm can import external scripts, weights and libraries
 * The solution is uploaded to the server
 * The solution is run on a hidden test_test
@@ -138,7 +175,27 @@ Since the network was pre-trained, it was impossible for us to reduce its size a
 
 ## Troubleshooting {#demo-semseg-troubleshooting}
 
-Add here any troubleshooting / tips and tricks required.
+Error message:      
+
+    $ ERROR: unable to contact ROS master at [http://10.41.0.233:11311]
+The traceback for the exception was written to the log file
+
+---> Check that the roscore container is running on your robot (go on Portainer, refresh the page and start the roscore container)
+---> ping your robot and check your IP adress again, as it might have changed
+---> re-enter the command with the right IP address
+
+I followed the guide but nothing happens in the terminal after this line:    
+
+    $ [INFO] [1545147258.632912]: tf semantic segmentation node started
+
+---> Check that your ros-picam container is running (go on Portainer, refresh the page and activate it)
+
+
+
+
+
+
+
 
 ## Demo failure demonstration {#demo-semseg-failure}
 
